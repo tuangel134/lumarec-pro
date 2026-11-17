@@ -1,26 +1,25 @@
 <div align="center">
 
-# LumaRec Pro
+<h1>LumaRec Pro</h1>
 
-**A native Android video recorder with a locally encrypted vault.**
-
-Camera2 + MediaRecorder · foreground recording · AES-256-GCM storage · no network permission
-
-<br>
+<p><strong>Native Android video recorder with a locally encrypted vault.</strong><br>
+Camera2 + MediaRecorder · background recording · AES-256-GCM storage · no network permission</p>
 
 <a href="https://github.com/tuangel134/lumarec-pro/releases/latest/download/lumarec-pro-1.4.0.apk">
-  <img src="https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_DESCARGAR_APK-1.4.0-E11D2F?style=for-the-badge&logo=android&logoColor=white" alt="Download APK" height="44">
+  <img src="https://img.shields.io/badge/%E2%AC%87_DESCARGAR_APK-1.4.0-E11D2F?style=for-the-badge&logo=android&logoColor=white" alt="Descargar APK 1.4.0" height="46">
 </a>
-
-<sub>122 KB · Android 11+ · signed · <a href="https://github.com/tuangel134/lumarec-pro/releases/latest">all releases</a></sub>
 
 <br><br>
 
-![Android](https://img.shields.io/badge/Android-11%2B-3DDC84?logo=android&logoColor=white&style=flat-square)
-![API](https://img.shields.io/badge/API-30%20%E2%86%92%2036-1F6FEB?style=flat-square)
-![Java](https://img.shields.io/badge/Java-17-E76F00?style=flat-square)
-![License](https://img.shields.io/badge/license-MIT-2EA043?style=flat-square)
-![No internet](https://img.shields.io/badge/INTERNET-no%20permission-8957E5?style=flat-square)
+<img src="https://img.shields.io/badge/Android-11%2B-3DDC84?logo=android&logoColor=white&style=flat-square" alt="Android 11+">
+<img src="https://img.shields.io/badge/API-30%20%E2%86%92%2036-1F6FEB?style=flat-square" alt="API 30 to 36">
+<img src="https://img.shields.io/badge/Java-17-E76F00?style=flat-square" alt="Java 17">
+<img src="https://img.shields.io/github/v/release/tuangel134/lumarec-pro?style=flat-square&color=8957E5" alt="Release">
+<img src="https://img.shields.io/github/license/tuangel134/lumarec-pro?style=flat-square&color=2EA043" alt="MIT license">
+
+<br>
+
+<sub>122 KB APK · signed · <a href="https://github.com/tuangel134/lumarec-pro/releases">all releases</a></sub>
 
 </div>
 
@@ -28,7 +27,7 @@ Camera2 + MediaRecorder · foreground recording · AES-256-GCM storage · no net
 
 ## 📲 Install
 
-**On the phone:** download the APK with the button above and open it. Android will ask you to allow installs from your browser or file manager.
+**On the phone:** tap the button above, download the APK and open it. Android will ask you to allow installs from your browser or file manager.
 
 **With ADB:**
 
@@ -36,60 +35,43 @@ Camera2 + MediaRecorder · foreground recording · AES-256-GCM storage · no net
 adb install -r lumarec-pro-1.4.0.apk
 ```
 
-<div align="center"><sub>
-
-Requires Android 11 or newer. The published APK is signed with a private key that is **not** in this repository — a build you sign yourself will not update it in place, so uninstall the existing copy first.
-
-</sub></div>
+<sub>Requires Android 11 or newer. The published APK is signed with a private key that is **not** in this repository — a build you sign yourself will not update it in place, so uninstall the existing copy first.</sub>
 
 ## ✨ Features
-
-<table>
-<tr><td width="50%" valign="top">
 
 ### 🎥 Recording
 
 - Every camera, resolution and frame rate Camera2 advertises, including a 4K/60 attempt with automatic HEVC retry
-- Live zoom, exposure compensation, white balance, focus modes, LED torch
-- Exposure and white-balance locks that reset per session
-- Orientation override, custom bitrate, AAC 64–256 kbps
+- Live zoom, exposure compensation, white balance, focus modes and LED torch
+- Exposure and white-balance locks that reset for every session
+- Orientation override, automatic or custom bitrate, AAC audio at 64–256 kbps
 - Timer, duration and size limits, estimated MB/min
-- Reusable profiles for camera, quality, audio and limits
+- Reusable profiles for camera, quality, audio, orientation and limits
 
-</td><td width="50%" valign="top">
-
-### 🔒 Vault
+### 🔒 Encrypted vault
 
 - Chunked **AES-256-GCM** encryption — seek and play without decrypting to disk
-- **RSA-OAEP/SHA-256** quick-seal: record while the vault stays locked
-- Key wrapped with **PBKDF2** + a non-exportable **Android Keystore** key
+- **RSA-OAEP/SHA-256** quick-seal: keep recording while the vault stays locked
+- Key wrapped with **PBKDF2** plus a non-exportable **Android Keystore** key
 - Unlock with a password or a four-tap pattern (256 combinations, attempt lockout)
-- Files hidden from the gallery; export creates a plain MP4 only after confirmation
-- Screenshots and overlays blocked on vault screens
+- Encrypted files stay out of the gallery; exporting creates a plain MP4 only after confirmation
+- Vault screens block screenshots and overlays
 
-</td></tr>
-<tr><td width="50%" valign="top">
+### 🎬 Background recording
 
-### 🎬 Background use
-
-- Foreground service (`camera|microphone`) — keeps recording with the screen off
+- Foreground service of type `camera|microphone`, so recording survives a locked screen
 - Three notification styles: full controls, stop-only, or a compact line
 - Three widgets: 1×1 camera, status/controls panel, transparent 1×1 icon
 - Quick Settings tile to start and stop
 
-</td><td width="50%" valign="top">
+### 📚 Library and player
 
-### 📚 Library & player
-
-- Search, sorting, favourites, custom names, details, multi-select delete
-- Export folder via the Storage Access Framework, with path-safe filenames
+- Search, sorting, favourites, custom internal names, details and multi-select delete
+- Export folder chosen through the Storage Access Framework, with path-safe filenames
 - Private player with 0.5×–2× speed and 15-second skips
 - No ads, no analytics, no `INTERNET` permission
 
-</td></tr>
-</table>
-
-> Actual 4K/60, manual focus and similar extras depend on the device's camera HAL. Failed live requests are rolled back to the settings already recording. There is **no password recovery**: uninstalling the app or clearing its data destroys the vault and its keys.
+> 4K/60, manual focus and similar extras depend on the device's camera HAL. Failed live requests roll back to the settings already recording. There is **no password recovery**: uninstalling the app or clearing its data destroys the vault and its keys.
 
 ## 🛠 Build
 
