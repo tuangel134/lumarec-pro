@@ -137,4 +137,4 @@ java -cp "/tmp/lumarec-tests:$CP" com.lumarec.pro.VideoNamesTest   # 153 checks
 
 ## License
 
-This repository ships no license file, so no rights are granted by default. If you want others to reuse and redistribute the code, add a license of your choice (for example MIT or Apache-2.0) before publishing.
+[MIT](LICENSE) © 2026 tuangel134 — free to use, modify, merge, publish, distribute, sublicense and sell, provided the copyright notice and permission notice are kept. The software is provided without warranty.
