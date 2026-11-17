@@ -1,46 +1,97 @@
+<div align="center">
+
 # LumaRec Pro
 
-A native Android video recorder built on **Camera2** and **MediaRecorder**, with a foreground recording service, an encrypted local vault, a private player and home-screen widgets. Everything stays on the device: the app has no `INTERNET` permission, no ads and no analytics SDKs.
+**A native Android video recorder with a locally encrypted vault.**
 
-`com.lumarec.pro` · version 1.4.0 · minSdk 30 (Android 11) · targetSdk 36 (Android 16) · Java 17
+Camera2 + MediaRecorder · foreground recording · AES-256-GCM storage · no network permission
+
+<br>
+
+<a href="https://github.com/tuangel134/lumarec-pro/releases/latest/download/lumarec-pro-1.4.0.apk">
+  <img src="https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_DESCARGAR_APK-1.4.0-E11D2F?style=for-the-badge&logo=android&logoColor=white" alt="Download APK" height="44">
+</a>
+
+<sub>122 KB · Android 11+ · signed · <a href="https://github.com/tuangel134/lumarec-pro/releases/latest">all releases</a></sub>
+
+<br><br>
+
+![Android](https://img.shields.io/badge/Android-11%2B-3DDC84?logo=android&logoColor=white&style=flat-square)
+![API](https://img.shields.io/badge/API-30%20%E2%86%92%2036-1F6FEB?style=flat-square)
+![Java](https://img.shields.io/badge/Java-17-E76F00?style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-2EA043?style=flat-square)
+![No internet](https://img.shields.io/badge/INTERNET-no%20permission-8957E5?style=flat-square)
+
+</div>
 
 ---
 
-## Features
+## 📲 Install
 
-**Recording**
+**On the phone:** download the APK with the button above and open it. Android will ask you to allow installs from your browser or file manager.
 
-- Every camera, resolution and frame rate the device advertises through Camera2, including a 4K/60 attempt with an automatic HEVC retry on capable hardware.
-- Live zoom and exposure compensation, white balance, continuous/infinity focus, LED torch during capture, and exposure/white-balance locks that reset per session.
-- Orientation override (sensor, portrait, landscape, reversed), automatic or custom bitrate, AAC at 64–256 kbps, and microphone / voice-optimised / unprocessed audio sources when the platform reports support.
-- Timers (1–30 s), optional duration and size limits, and an estimated MB/min figure.
-- Reusable profiles that store camera, quality, audio, controls, orientation, naming and limits — never vault keys.
+**With ADB:**
 
-**Background recording**
+```bash
+adb install -r lumarec-pro-1.4.0.apk
+```
 
-- A foreground service of type `camera|microphone`, so recording continues with the screen locked.
-- Three notification styles: full controls, stop-only status, or a compact “LumaRec” line.
-- Three independent widgets: 1×1 camera, a status/controls panel, and a transparent 1×1 icon with a configurable image and internal name.
-- A Quick Settings tile that starts and stops recording.
+<div align="center"><sub>
 
-**Vault**
+Requires Android 11 or newer. The published APK is signed with a private key that is **not** in this repository — a build you sign yourself will not update it in place, so uninstall the existing copy first.
 
-- Local encrypted storage using chunked **AES-256-GCM**, so videos can be seeked and played without exporting a decrypted copy.
-- **RSA-OAEP/SHA-256** quick-seal: a public capture key lets new recordings be sealed while the vault is locked; opening, sharing or exporting still requires unlocking.
-- Vault key protected with **PBKDF2** combined with a non-exportable **Android Keystore** HMAC key.
-- Unlock with a written password or a four-tap pattern (256 combinations, with attempt lockout).
-- Encrypted files are not visible to the gallery or other apps; sharing or exporting creates a plain MP4 only after an explicit confirmation and keeps the encrypted original.
-- Vault windows block screenshots and overlays; vault data is excluded from backup and device transfer.
+</sub></div>
 
-**Library and player**
+## ✨ Features
 
-- Search, sorting, favourites, custom internal names, details and multi-select delete with confirmation.
-- Export folder chosen through the Storage Access Framework, with validated, path-safe filenames.
-- Private player with 0.5×–2× speed and 15-second skips that reads the encrypted file directly.
+<table>
+<tr><td width="50%" valign="top">
 
-> Actual 4K/60, manual focus and similar extras depend on the device's camera HAL. Failed live requests are rolled back to the settings that are already recording. There is no password or pattern recovery: uninstalling the app or clearing its data destroys the vault and its keys.
+### 🎥 Recording
 
-## Requirements
+- Every camera, resolution and frame rate Camera2 advertises, including a 4K/60 attempt with automatic HEVC retry
+- Live zoom, exposure compensation, white balance, focus modes, LED torch
+- Exposure and white-balance locks that reset per session
+- Orientation override, custom bitrate, AAC 64–256 kbps
+- Timer, duration and size limits, estimated MB/min
+- Reusable profiles for camera, quality, audio and limits
+
+</td><td width="50%" valign="top">
+
+### 🔒 Vault
+
+- Chunked **AES-256-GCM** encryption — seek and play without decrypting to disk
+- **RSA-OAEP/SHA-256** quick-seal: record while the vault stays locked
+- Key wrapped with **PBKDF2** + a non-exportable **Android Keystore** key
+- Unlock with a password or a four-tap pattern (256 combinations, attempt lockout)
+- Files hidden from the gallery; export creates a plain MP4 only after confirmation
+- Screenshots and overlays blocked on vault screens
+
+</td></tr>
+<tr><td width="50%" valign="top">
+
+### 🎬 Background use
+
+- Foreground service (`camera|microphone`) — keeps recording with the screen off
+- Three notification styles: full controls, stop-only, or a compact line
+- Three widgets: 1×1 camera, status/controls panel, transparent 1×1 icon
+- Quick Settings tile to start and stop
+
+</td><td width="50%" valign="top">
+
+### 📚 Library & player
+
+- Search, sorting, favourites, custom names, details, multi-select delete
+- Export folder via the Storage Access Framework, with path-safe filenames
+- Private player with 0.5×–2× speed and 15-second skips
+- No ads, no analytics, no `INTERNET` permission
+
+</td></tr>
+</table>
+
+> Actual 4K/60, manual focus and similar extras depend on the device's camera HAL. Failed live requests are rolled back to the settings already recording. There is **no password recovery**: uninstalling the app or clearing its data destroys the vault and its keys.
+
+## 🛠 Build
 
 | | |
 |---|---|
@@ -48,8 +99,6 @@ A native Android video recorder built on **Camera2** and **MediaRecorder**, with
 | Android SDK | Platform 36, Build-Tools 36.x |
 | Gradle | 8.13 (via wrapper) |
 | Android Gradle Plugin | 8.10.1 |
-
-## Build
 
 ```bash
 git clone https://github.com/tuangel134/lumarec-pro.git
@@ -64,15 +113,7 @@ echo "sdk.dir=$HOME/Android/Sdk" > local.properties
 
 The release build is intentionally unsigned: signing material is never committed. To produce an installable release, add your own keystore and a `signingConfigs` block to `app/build.gradle`.
 
-## Install the included APK
-
-```bash
-adb install -r apk/lumarec-pro-1.4.0.apk
-```
-
-`apk/lumarec-pro-1.4.0.apk` is the signed 1.4.0 build. It is signed with a private key that is **not** part of this repository, so an APK you build and sign yourself will not update it in place unless it uses the same key — uninstall the existing copy first, or sign with your own key from the start.
-
-## Project structure
+## 📁 Project structure
 
 ```
 app/
@@ -105,7 +146,7 @@ tests/                             standalone JVM checks (see below)
 apk/                               signed reference build
 ```
 
-## Permissions
+## 🔐 Permissions
 
 | Permission | Why |
 |---|---|
@@ -118,9 +159,9 @@ apk/                               signed reference build
 
 There is no `INTERNET` permission. The `LocalMediaProvider` is not exported and hands out read-only URIs that expire after 15 minutes.
 
-## Tests
+## 🧪 Tests
 
-`tests/` holds self-contained JVM classes with a `main` method — no JUnit runner needed. They exercise the vault container, quick-seal capture and export naming against the compiled app classes. Build once, then compile and run them against that output:
+`tests/` holds self-contained JVM classes with a `main` method — no JUnit runner needed. They exercise the vault container, quick-seal capture and export naming against the compiled app classes:
 
 ```bash
 ./gradlew assembleDebug
@@ -135,6 +176,6 @@ java -cp "/tmp/lumarec-tests:$CP" com.lumarec.pro.VideoNamesTest   # 153 checks
 
 `tests/android/WidgetSmokeInstrumentation.java` is an instrumentation class; it needs a connected device and is not part of the APK.
 
-## License
+## 📄 License
 
 [MIT](LICENSE) © 2026 tuangel134 — free to use, modify, merge, publish, distribute, sublicense and sell, provided the copyright notice and permission notice are kept. The software is provided without warranty.
