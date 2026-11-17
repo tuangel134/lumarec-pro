@@ -1,0 +1,9 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/camera_widget_root" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:gravity="center" android:padding="4dp" android:background="@drawable/widget_idle"
+    android:contentDescription="@string/widget_description">
+    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_widget_camera" android:importantForAccessibility="no" />
+    <TextView android:id="@+id/camera_widget_title" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="2dp" android:text="Grabar" android:textColor="#FFF4F6" android:textSize="10sp"
+        android:fontFamily="sans-serif-medium" android:includeFontPadding="false" android:maxLines="1" />
+</LinearLayout>

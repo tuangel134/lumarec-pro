@@ -1,0 +1,7 @@
+<resources>
+    <string name="widget_name">Grabación · Icono transparente</string>
+    <string name="widget_description">Toca para iniciar la grabación. Vuelve a tocar para detener y guardar.</string>
+    <string name="camera_widget_name">Grabación · Cámara 1×1</string>
+    <string name="panel_widget_name">Grabación · Panel de controles</string>
+    <string name="panel_description">Estado, tiempo y controles para grabar, pausar y detener desde la pantalla de inicio.</string>
+</resources>
